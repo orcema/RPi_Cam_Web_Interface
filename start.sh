@@ -48,6 +48,11 @@ fn_stop ()
 
 #start operation
 fn_stop
+
+echo /opt/vc/lib > /etc/ld.so.conf.d/pi_vc_core.conf && ldconfig
+sudo service php5-fpm start
+sudo service nginx start
+
 sudo mkdir -p /dev/shm/mjpeg
 sudo chown www-data:www-data /dev/shm/mjpeg
 sudo chmod 777 /dev/shm/mjpeg
