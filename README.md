@@ -7,9 +7,12 @@ The wiki page can be found here:
 http://elinux.org/RPi-Cam-Web-Interface
 
 This includes the installation instructions at the top and full technical details.
+download the Dockerfile
+>wget https://raw.githubusercontent.com/orcema/RPi_Cam_Web_Interface/master/Dockerfile
 
 docker build command
 >sudo docker build -t img_rpi_cam_web_om .
+
 docker install command
->sudo docker run -d --name=rpi_cam_web_om  -p=81:80/tcp --volume=/opt/vc:/opt/vc --device=/dev/vchiq --device=/dev/vcsm rpi_cam_web_om
+>sudo docker run -d --name=rpi_cam_web_om  -p=81:80/tcp --volume=/opt/vc:/opt/vc --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
   
