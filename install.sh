@@ -55,7 +55,7 @@ backtitle="Copyright (c) 2015, Bob Tidey. RPi Cam $version"
 # Config options located in ./config.txt. In first run script makes that file for you.
 if [ ! -e ./config.txt ]; then
       sudo echo "#This is config file for main installer. Put any extra options in here." > ./config.txt
-      sudo echo "rpicamdir=\"html\"" >> ./config.txt
+      sudo echo "rpicamdir=" >> ./config.txt
       sudo echo "webserver=\"apache\"" >> ./config.txt
       sudo echo "webport=\"80\"" >> ./config.txt
       sudo echo "user=\"\"" >> ./config.txt
