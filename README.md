@@ -15,4 +15,9 @@ docker build command
 
 docker install command
 >sudo docker run -d --name=rpi_cam_web_om  -p=81:80/tcp --volume=/opt/vc:/opt/vc --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
+
+
+Or use the installer script for building docker image and installing container
+>wget -qO - https://raw.githubusercontent.com/orcema/RPi_Cam_Web_Interface/master/setupDocker.sh | bash
+
   
