@@ -50,6 +50,7 @@ fn_stop ()
 fn_stop
 
 echo /opt/vc/lib > /etc/ld.so.conf.d/pi_vc_core.conf && ldconfig
+sudo cp nginx/default /etc/nginx/sites-enabled/default
 sudo service php5-fpm start
 sudo service nginx start
 
