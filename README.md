@@ -14,7 +14,7 @@ docker build command
 >sudo docker build -t img_rpi_cam_web_om .
 
 docker install command
->sudo docker run -d --name=rpi_cam_web_om  -p=81:80/tcp --volume=/opt/vc:/opt/vc --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
+>sudo docker run -d --name=rpi_cam_web_om  -p=81:80/tcp --volume=/opt/vc:/opt/vc /opt/config:/opt/config --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
 
 
 Or use the installer script for building docker image and installing container

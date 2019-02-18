@@ -22,4 +22,4 @@ wget -q https://raw.githubusercontent.com/orcema/RPi_Cam_Web_Interface/master/Do
 sudo docker build -t img_rpi_cam_web_om .
 
 #setup docker container
-sudo docker run -d --name=rpi_cam_web_om -p=81:80/tcp --volume=/opt/vc:/opt/vc --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
+sudo docker run -d --name=rpi_cam_web_om -p=81:80/tcp --volume=/opt/vc:/opt/vc --volume=/opt/config:/opt/config --device=/dev/vchiq --device=/dev/vcsm img_rpi_cam_web_om
