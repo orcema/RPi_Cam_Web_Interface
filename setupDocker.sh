@@ -1,9 +1,9 @@
-DIRECTORY="/opt/config"
+DIRECTORY="/opt/config/rpi_web_cam"
 DOCKERFILE="/tmp/Dockerfile"
 
 # create the config folder in  /opt
 if [[ ! -e "$DIRECTORY" ]]; then
-        sudo mkdir -p /opt/config
+        sudo mkdir -p "$DIRECTORY"
 else
         echo "[INFO]    folder "."$DIRECTORY"." exists !";
 fi

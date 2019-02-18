@@ -30,6 +30,9 @@
 # Additions by btidey, miraaz, gigpi
 # Split up and refactored by Bob Tidey 
 
+# config folder external to docker
+configFolder="/opt/config/rpi_web_cam"
+
 #Debug enable next 3 lines
 exec 5> start.txt
 BASH_XTRACEFD="5"
@@ -48,11 +51,18 @@ fn_init()
 {
 	echo /opt/vc/lib > /etc/ld.so.conf.d/pi_vc_core.conf && ldconfig
 
-	# init file raspimjpeg if missing in /opt/config/ 
-	if [[ ! -f /opt/config/raspimjpeg ]]; then
-			sudo cp etc/raspimjpeg/raspimjpeg.1 /opt/config/raspimjpeg
+	# init file raspimjpeg in config folder external to docker
+	if [[ ! -f "$configFolder"/raspimjpeg ]]; then
+			sudo cp etc/raspimjpeg/raspimjpeg.1 "$configFolder"/raspimjpeg
 	fi	
-	sudo cp /opt/config/raspimjpeg /etc/raspimjpeg
+	sudo cp "$configFolder"/raspimjpeg /etc/raspimjpeg
+
+	# init file motion.conf in config folder external to docker
+	if [[ ! -f "$configFolder"/motion.conf ]]; then
+			sudo cp etc/motion/motion.conf.1 "$configFolder"/motion.conf
+	fi	
+	sudo cp "$configFolder"/motion.conf /etc/motion/motion.conf
+	
 	
 	sudo cp nginx/default /etc/nginx/sites-enabled/default
 	
