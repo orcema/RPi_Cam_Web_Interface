@@ -38,6 +38,25 @@ set -x
 cd $(dirname $(readlink -f $0))
 
 source ./config.txt
+fn_servicesUp()
+{
+	sudo service php5-fpm start
+	sudo service nginx start
+}
+
+fn_init()
+{
+	echo /opt/vc/lib > /etc/ld.so.conf.d/pi_vc_core.conf && ldconfig
+
+	# init file raspimjpeg if missing in /opt/config/ 
+	if [[ ! -f /opt/config/raspimjpeg ]]; then
+			sudo cp etc/raspimjpeg/raspimjpeg.1 /opt/config/raspimjpeg
+	fi	
+	sudo cp /opt/config/raspimjpeg /etc/raspimjpeg
+	
+	sudo cp nginx/default /etc/nginx/sites-enabled/default
+	
+}
 
 fn_stop ()
 { # This is function stop
@@ -48,12 +67,9 @@ fn_stop ()
 
 #start operation
 fn_stop
+fn_init
+fn_servicesUp
 
-echo /opt/vc/lib > /etc/ld.so.conf.d/pi_vc_core.conf && ldconfig
-sudo cp nginx/default /etc/nginx/sites-enabled/default
-sudo cp etc/raspimjpeg/raspimjpeg.1 /etc/raspimjpeg
-sudo service php5-fpm start
-sudo service nginx start
 
 sudo mkdir -p /dev/shm/mjpeg
 sudo chown www-data:www-data /dev/shm/mjpeg
