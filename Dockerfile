@@ -1,4 +1,5 @@
 FROM debian:jessie
+MAINTAINER "Orce MARINKOVSKI" <orce00@gmail.com>
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH="$PATH:/opt/vc/bin/raspimjpeg"
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/vc/lib
@@ -6,6 +7,5 @@ RUN apt-get update -y && apt-get install -y curl wget git sudo psmisc dialog ngi
 RUN mkdir -p /rpi-cam-web
 WORKDIR /opt
 RUN git clone https://github.com/orcema/RPi_Cam_Web_Interface.git && chmod u+x RPi_Cam_Web_Interface/*.sh && RPi_Cam_Web_Interface/install.sh q
-#RUN git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git && cd RPi_Cam_Web_Interface; git checkout -q c4d19ec; cd .. && chmod u+x RPi_Cam_Web_Interface/*.sh && RPi_Cam_Web_Interface/install.sh q
 WORKDIR /opt/RPi_Cam_Web_Interface
 CMD ./start.sh;tail -f /dev/null
